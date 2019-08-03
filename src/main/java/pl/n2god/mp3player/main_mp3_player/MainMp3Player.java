@@ -20,11 +20,10 @@ public class MainMp3Player extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/helloView.fxml"));
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/fxml/mainPane.fxml"));
         Scene scene = new Scene(anchorPane);
         stage.setScene(scene);
-        System.out.println("Start");
-        stage.setTitle("Hello FX!");
+        stage.setTitle("Mp3 Player");
         stage.show();
     }
 
