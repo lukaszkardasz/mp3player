@@ -6,5 +6,5 @@
     requires javafx.controls;
     requires javafx.fxml;
     exports pl.n2god.mp3player.mvc.main to javafx.graphics, javafx.controls;
-    opens pl.n2god.mp3player.mvc.controller to javafx.fxml;
+    opens pl.n2god.mp3player.mvc.controller to javafx.fxml; //dostęp do pól prywatnych poprzez refleksję
 }
