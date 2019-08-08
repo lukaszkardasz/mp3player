@@ -1,4 +1,4 @@
-package pl.n2god.mp3player.main_mp3_player.controller;
+package pl.n2god.mp3player.mvc.controller;
 
 /**
  * @author n2god on 08/08/2019

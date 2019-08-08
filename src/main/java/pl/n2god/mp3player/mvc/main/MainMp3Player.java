@@ -1,4 +1,4 @@
-package pl.n2god.mp3player.main_mp3_player.main;
+package pl.n2god.mp3player.mvc.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

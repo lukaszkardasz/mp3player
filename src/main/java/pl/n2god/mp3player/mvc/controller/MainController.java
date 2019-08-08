@@ -1,20 +1,19 @@
 package pl.n2god.mp3player.mvc.controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TableView;
-import javafx.scene.control.ToggleButton;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
-public class MainController implements Initializable {
+/**
+ * @author n2god on 08/08/2019
+ * @project mp3player
+ */
+
+public class MainController{
 
     @FXML
-    private Button prevousButton;
+    private Button previousButton;
 
     @FXML
     private ToggleButton playButton;
@@ -35,16 +34,16 @@ public class MainController implements Initializable {
     private MenuItem dirMenuItem;
 
     @FXML
-    private MenuItem closeMenuItem;
+    private MenuItem exitMenuItem;
 
     @FXML
     private MenuItem aboutMenuItem;
 
     @FXML
-    private TableView<?> contentTable; //? bo klasa generyczna i można dać cokolwiek
+    private TableView<?> contentTable;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("MainController created");
+    public void initialize(){
+        System.out.println("Main controller created");
     }
 }
+
