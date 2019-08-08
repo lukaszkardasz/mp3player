@@ -5,5 +5,7 @@
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
-    exports pl.n2god.mp3player.main_mp3_player to javafx.graphics, javafx.fxml;
+
+    exports pl.n2god.mp3player.main_mp3_player.main to javafx.graphics;
+    opens pl.n2god.mp3player.main_mp3_player.controller to javafx.fxml;
 }
