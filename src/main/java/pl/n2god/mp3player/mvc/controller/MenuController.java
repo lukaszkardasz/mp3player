@@ -22,6 +22,22 @@ public class MenuController {
     @FXML
     private MenuItem aboutMenuItem;
 
+    public MenuItem getFileMenuItem() {
+        return fileMenuItem;
+    }
+
+    public MenuItem getDirMenuItem() {
+        return dirMenuItem;
+    }
+
+    public MenuItem getExitMenuItem() {
+        return exitMenuItem;
+    }
+
+    public MenuItem getAboutMenuItem() {
+        return aboutMenuItem;
+    }
+
     public void initialize(){
         System.out.println("Menu controller created");
     }

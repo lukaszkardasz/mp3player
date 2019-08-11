@@ -13,6 +13,10 @@ public class ContentController {
     @FXML
     private TableView<?> contentTable;
 
+    public TableView<?> getContentTable() {
+        return contentTable;
+    }
+
     public void initialize(){
         System.out.println("Content controller created");
     }
