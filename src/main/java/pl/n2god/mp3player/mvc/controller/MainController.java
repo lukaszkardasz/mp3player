@@ -13,37 +13,20 @@ import javafx.scene.input.MouseEvent;
 public class MainController{
 
     @FXML
-    private Button previousButton;
+    private ContentController contentController;
 
     @FXML
-    private ToggleButton playButton;
+    private ControlController controlController;
 
     @FXML
-    private Button nextButton;
-
-    @FXML
-    private Slider volumeSlider;
-
-    @FXML
-    private Slider progressSlider;
-
-    @FXML
-    private MenuItem fileMenuItem;
-
-    @FXML
-    private MenuItem dirMenuItem;
-
-    @FXML
-    private MenuItem exitMenuItem;
-
-    @FXML
-    private MenuItem aboutMenuItem;
-
-    @FXML
-    private TableView<?> contentTable;
+    private MenuController menuController;
 
     public void initialize(){
+
         System.out.println("Main controller created");
+        System.out.println(contentController);
+        System.out.println(controlController);
+        System.out.println(menuController);
     }
 }
 

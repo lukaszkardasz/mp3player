@@ -28,6 +28,26 @@ public class ControlController {
     @FXML
     private Slider progressSlider;
 
+    public Button getPreviousButton() {
+        return previousButton;
+    }
+
+    public ToggleButton getPlayButton() {
+        return playButton;
+    }
+
+    public Button getNextButton() {
+        return nextButton;
+    }
+
+    public Slider getVolumeSlider() {
+        return volumeSlider;
+    }
+
+    public Slider getProgressSlider() {
+        return progressSlider;
+    }
+
     public void initialize(){
         configureButtons();
         configureSliders();
