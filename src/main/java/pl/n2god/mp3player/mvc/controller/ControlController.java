@@ -29,7 +29,6 @@ public class ControlController {
     private Slider progressSlider;
 
     public void initialize(){
-        System.out.println("Control controller created :)");
         configureButtons();
         configureSliders();
     }
@@ -37,6 +36,10 @@ public class ControlController {
 
     private void configureSliders() {
         volumeSlider.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseEvent -> System.out.println("Wciśnięto przycisk na suwaku głośności"));
+        volumeSlider.valueProperty().addListener(((observableValue, oldValue, newValue) ->
+                System.out.println("Zmiana głośności: " + newValue)
+        ));
+        progressSlider.valueProperty().addListener(x -> System.out.println("Przesunięcie piosenki!"));
     }
 
     private void configureButtons() {
