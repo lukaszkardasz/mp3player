@@ -26,6 +26,22 @@ public class ContentController {
     @FXML
     private TableView<Mp3Song> contentTable;
 
+    public static String getTitleColumn() {
+        return TITLE_COLUMN;
+    }
+
+    public static String getAuthorColumn() {
+        return AUTHOR_COLUMN;
+    }
+
+    public static String getAlbumColumn() {
+        return ALBUM_COLUMN;
+    }
+
+    public TableView<Mp3Song> getContentTable() {
+        return contentTable;
+    }
+
     public void initialize(){
         configureTableColumns();
         createTestData();
@@ -38,13 +54,13 @@ public class ContentController {
     }
 
     private void configureTableColumns() {
-        TableColumn<Mp3Song, String> titleColumn = new TableColumn<Mp3Song, String>(TITLE_COLUMN);
+        TableColumn<Mp3Song, String> titleColumn = new TableColumn<>(TITLE_COLUMN);
         titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
 
-        TableColumn<Mp3Song, String> authorColumn = new TableColumn<Mp3Song, String>(AUTHOR_COLUMN);
+        TableColumn<Mp3Song, String> authorColumn = new TableColumn<>(AUTHOR_COLUMN);
         authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
 
-        TableColumn<Mp3Song, String> albumColumn = new TableColumn<Mp3Song, String>(ALBUM_COLUMN);
+        TableColumn<Mp3Song, String> albumColumn = new TableColumn<>(ALBUM_COLUMN);
         albumColumn.setCellValueFactory(new PropertyValueFactory<>("album"));
 
         contentTable.getColumns().add(titleColumn);
@@ -63,7 +79,7 @@ public class ContentController {
             String album = mp3File.getID3v2Tag().getAlbumTitle();
             return new Mp3Song(title, author,album, absolutePath);
         } catch (IOException | TagException e) {
-            e.printStackTrace();
+            e.getStackTrace();
             return null; //zignorować
         }
     }
