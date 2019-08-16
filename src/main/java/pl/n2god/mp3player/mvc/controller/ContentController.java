@@ -10,6 +10,10 @@ import javafx.scene.control.TableView;
 
 public class ContentController {
 
+    private static final String TITLE_COLUMN = "Tytuł";
+    private static final String AUTHOR_COLUMN = "Autor";
+    private static final String ALBUM_COLUMN = "Album";
+
     @FXML
     private TableView<?> contentTable;
 
@@ -18,7 +22,11 @@ public class ContentController {
     }
 
     public void initialize(){
-        System.out.println("Content controller created");
+        configureTableColumns();
+    }
+
+    private void configureTableColumns() {
+
     }
 }
 
