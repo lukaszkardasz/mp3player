@@ -6,8 +6,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import org.farng.mp3.MP3File;
+import org.farng.mp3.TagException;
 import pl.n2god.mp3player.mvc.mp3.Mp3Song;
 import pl.n2god.mp3player.mvc.player.Mp3Player;
+
+import java.io.File;
+import java.io.IOException;
 
 /**
  * @author n2god on 08/08/2019
@@ -104,7 +109,29 @@ public class MainController{
         });
     }
 
+    private Mp3Song createMp3SongFromPath(String filePath){
+        File file = new File(filePath);
 
+        try {
+            MP3File mp3File = new MP3File(file);
+            String absolutePath = file.getAbsolutePath();
+            String title = mp3File.getID3v2Tag().getSongTitle();
+            String author = mp3File.getID3v2Tag().getLeadArtist();
+            String album = mp3File.getID3v2Tag().getAlbumTitle();
+            return new Mp3Song(title, author,album, absolutePath);
+        } catch (IOException | TagException e) {
+            e.getStackTrace();
+            return null; //zignorować
+        }
+    }
+
+    private void addTestMp3() {
+        ObservableList<Mp3Song> items = contentController.getContentTable().getItems();
+        Mp3Song mp3SongFromPath = createMp3SongFromPath("test.mp3");
+        items.add(mp3SongFromPath);
+        items.add(mp3SongFromPath);
+        items.add(mp3SongFromPath);
+    }
 
 
 }
