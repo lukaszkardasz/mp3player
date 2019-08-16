@@ -37,6 +37,5 @@ public class MenuController {
     public MenuItem getAboutMenuItem() {
         return aboutMenuItem;
     }
-
 }
 
