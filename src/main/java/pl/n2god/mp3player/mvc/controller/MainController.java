@@ -78,5 +78,34 @@ public class MainController{
         volumeSlider.setMax(1.0);
         volumeSlider.valueProperty().bindBidirectional(player.getMediaPlayer().volumeProperty()); //podwójne bindowanie volume z playerem
     }
+
+    private void configureButtons(){
+        TableView<Mp3Song> contentTable = contentController.getContentTable();
+        ToggleButton playButton = controlController.getPlayButton();
+        Button nextButton = controlController.getNextButton();
+        Button previousButton = controlController.getPreviousButton();
+
+        playButton.setOnAction(actionEvent -> {
+            if(playButton.isSelected()){
+                player.play();
+            } else {
+                player.stop();
+            }
+        });
+
+        nextButton.setOnAction(actionEvent -> {
+            contentTable.getSelectionModel().select(contentTable.getSelectionModel().getSelectedIndex() + 1);
+            playSelectedSong(contentTable.getSelectionModel().getSelectedIndex());
+        });
+
+        previousButton.setOnAction(actionEvent -> {
+            contentTable.getSelectionModel().select(contentTable.getSelectionModel().getSelectedIndex()-1);
+            playSelectedSong(contentTable.getSelectionModel().getSelectedIndex());
+        });
+    }
+
+
+
+
 }
 
