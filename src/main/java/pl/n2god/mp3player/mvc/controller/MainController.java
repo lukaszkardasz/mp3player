@@ -67,6 +67,7 @@ public class MainController{
         Slider progressSlider = controlController.getProgressSlider();
         //suwak długości postępu - ustawianie max długości na podstawie długości piosenki
         player.getMediaPlayer().setOnReady(() -> progressSlider.setMax(player.getLoadedSongLength()));
+        //TODO fix error on configure progress bar
         //zmiana aktualnego czasu piosenki będzie aktualizowała suwak postępu
         player.getMediaPlayer().currentTimeProperty().addListener((arg, oldVal, newVal) ->
                 progressSlider.setValue(newVal.toSeconds()));
