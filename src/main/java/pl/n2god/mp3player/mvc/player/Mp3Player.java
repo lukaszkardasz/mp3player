@@ -26,7 +26,7 @@ public class Mp3Player {
     }
 
     public void play(){
-        if(mediaPlayer != null && (mediaPlayer.getStatus()) == MediaPlayer.Status.READY || (mediaPlayer.getStatus()) == MediaPlayer.Status.PAUSED){
+        if(mediaPlayer != null && (mediaPlayer.getStatus() == MediaPlayer.Status.READY || mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED)) {
             mediaPlayer.play();
         }
     }

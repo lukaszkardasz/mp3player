@@ -68,14 +68,14 @@ public class MainController{
         //suwak długości postępu - ustawianie max długości na podstawie długości piosenki
         player.getMediaPlayer().setOnReady(() -> progressSlider.setMax(player.getLoadedSongLength()));
         //zmiana aktualnego czasu piosenki będzie aktualizowała suwak postępu
-        player.getMediaPlayer().currentTimeProperty().addListener(
-                (argument, oldValue, newValue) -> progressSlider.setValue(newValue.toSeconds()));
+        player.getMediaPlayer().currentTimeProperty().addListener((arg, oldVal, newVal) ->
+                progressSlider.setValue(newVal.toSeconds()));
         //przesunięcie suwaka powodujące przesunięcie piosenki we wskazane miejsce
-        progressSlider.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
-            if(progressSlider.isValueChanging()){
+        progressSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if(progressSlider.isValueChanging()) {
                 player.getMediaPlayer().seek(Duration.seconds(newValue.doubleValue()));
             }
-        }));
+        });
     }
 
     private void configureVolume() {
@@ -83,6 +83,7 @@ public class MainController{
         volumeSlider.valueProperty().unbind();
         volumeSlider.setMax(1.0);
         volumeSlider.valueProperty().bindBidirectional(player.getMediaPlayer().volumeProperty()); //podwójne bindowanie volume z playerem
+        System.out.println("volumeConfigured");
     }
 
     private void configureButtons(){
@@ -108,6 +109,7 @@ public class MainController{
             contentTable.getSelectionModel().select(contentTable.getSelectionModel().getSelectedIndex()-1);
             playSelectedSong(contentTable.getSelectionModel().getSelectedIndex());
         });
+        System.out.println("Buttons configured");
     }
 
     private Mp3Song createMp3SongFromPath(String filePath){
