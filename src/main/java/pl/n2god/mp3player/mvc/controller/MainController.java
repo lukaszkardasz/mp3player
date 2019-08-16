@@ -43,10 +43,10 @@ public class MainController{
     }
 
     //podwójne kliknięcie na wiersz tabeli - przekazujemy nr wiersza i tworzymy modele Media i playera
-    private void configureTableClick(){
+    private void configureTableClick() {
         TableView<Mp3Song> contentTable = contentController.getContentTable();
-        contentTable.addEventHandler(MouseEvent.MOUSE_CLICKED, event ->{
-            if (event.getClickCount() == 2){
+        contentTable.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            if (event.getClickCount() == 2) {
                 int selectedIndex = contentTable.getSelectionModel().getSelectedIndex();
                 playSelectedSong(selectedIndex);
             }

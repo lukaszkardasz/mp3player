@@ -21,18 +21,6 @@ public class ContentController {
     @FXML
     private TableView<Mp3Song> contentTable;
 
-    public static String getTitleColumn() {
-        return TITLE_COLUMN;
-    }
-
-    public static String getAuthorColumn() {
-        return AUTHOR_COLUMN;
-    }
-
-    public static String getAlbumColumn() {
-        return ALBUM_COLUMN;
-    }
-
     public TableView<Mp3Song> getContentTable() {
         return contentTable;
     }
