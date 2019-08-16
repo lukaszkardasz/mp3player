@@ -2,14 +2,14 @@
 
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.n2god.mp3player.mvc.controller.MainController">
+<BorderPane stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.n2god.mp3player.mvc.controller.MainController">
     <top>
-        <fx:include fx:id="menu" source="menuPane.fxml" />
+        <fx:include source="menuPane.fxml" />
     </top>
     <center>
-        <fx:include fx:id="content" source="contentPane.fxml" />
+        <fx:include source="contentPane.fxml" />
     </center>
     <bottom>
-        <fx:include fx:id="control" source="controlPane.fxml" />
+        <fx:include source="controlPane.fxml" />
     </bottom>
 </BorderPane>
