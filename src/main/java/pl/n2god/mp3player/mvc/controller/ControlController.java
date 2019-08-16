@@ -48,6 +48,9 @@ public class ControlController {
         return progressSlider;
     }
 
+    /*
+    prevous version - to teach purpose only
+
     public void initialize(){
         configureButtons();
         configureSliders();
@@ -72,6 +75,6 @@ public class ControlController {
                 System.out.println("Stop");
             }
         });
-    }
+    }*/
 }
 

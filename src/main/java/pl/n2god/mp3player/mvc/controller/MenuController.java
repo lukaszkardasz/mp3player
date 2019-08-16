@@ -38,9 +38,5 @@ public class MenuController {
         return aboutMenuItem;
     }
 
-    public void initialize(){
-        System.out.println("Menu controller created");
-    }
-
 }
 

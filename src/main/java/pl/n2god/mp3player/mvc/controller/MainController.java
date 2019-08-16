@@ -42,6 +42,7 @@ public class MainController{
     private void createPlayer() {
         ObservableList<Mp3Song> items = contentController.getContentTable().getItems();
          player = new Mp3Player(items);
+        System.out.println("Player created");
     }
 
     //podwójne kliknięcie na wiersz tabeli - przekazujemy nr wiersza i tworzymy modele Media i playera

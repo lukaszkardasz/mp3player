@@ -5,7 +5,6 @@ package pl.n2god.mp3player.mvc.controller;
  * @project mp3player
  */
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,6 +42,5 @@ public class ContentController {
         contentTable.getColumns().add(authorColumn);
         contentTable.getColumns().add(albumColumn);
     }
-
 }
 
