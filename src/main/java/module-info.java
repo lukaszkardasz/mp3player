@@ -5,6 +5,7 @@
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
     requires jid3lib;
 
     exports pl.n2god.mp3player.mvc.main to javafx.graphics;
