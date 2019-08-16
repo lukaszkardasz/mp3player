@@ -34,4 +34,24 @@ public class Mp3Player {
             mediaPlayer.pause();
         }
     }
+
+    public double getLoadedSongLength(){
+        if (media != null){
+            return media.getDuration().toSeconds();
+        } else return 0;
+    }
+
+    public void setVolume(double volume){
+        if(mediaPlayer != null){
+            mediaPlayer.setVolume(volume);
+        }
+    }
+
+    public void loadSong(int index){
+        if(mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING){
+            mediaPlayer.stop();
+        }
+        Mp3Song mp3Song = songList.get(index);
+
+    }
 }
