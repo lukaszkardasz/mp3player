@@ -5,6 +5,8 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import pl.n2god.mp3player.mvc.mp3.Mp3Song;
 
+import java.io.File;
+
 /**
  * @author n2god on 16/08/2019
  * @project mp3player
@@ -52,6 +54,12 @@ public class Mp3Player {
             mediaPlayer.stop();
         }
         Mp3Song mp3Song = songList.get(index);
-
+        media = new Media(new File(mp3Song.getFilePath()).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.statusProperty().addListener((observable, oldStatus, newStatus) -> {
+            if (newStatus == MediaPlayer.Status.READY){
+                mediaPlayer.setAutoPlay(true);
+            }
+        });
     }
 }
