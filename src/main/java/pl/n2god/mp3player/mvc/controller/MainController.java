@@ -53,5 +53,16 @@ public class MainController{
         configureVolume();
         controlController.getPlayButton().setSelected(true);
     }
+
+    private void configureProgressBar() {
+
+    }
+
+    private void configureVolume() {
+        Slider volumeSlider = controlController.getVolumeSlider();
+        volumeSlider.valueProperty().unbind();
+        volumeSlider.setMax(1.0);
+        volumeSlider.valueProperty().bindBidirectional(player.getMediaPlayer().volumeProperty()); //podwójne bindowanie volume z playerem
+    }
 }
 
