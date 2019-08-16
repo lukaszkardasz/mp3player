@@ -33,8 +33,10 @@ public class MainController{
     private Mp3Player player;
 
     public void initialize(){
-
         createPlayer();
+        configureTableClick();
+        configureButtons();
+        addTestMp3();
     }
 
     private void createPlayer() {
