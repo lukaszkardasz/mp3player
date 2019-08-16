@@ -1,5 +1,8 @@
 package pl.n2god.mp3player.mvc.mp3;
 
+/*to klasyczna klasa JavaBeans. Przy tabelach Javy FX często spotkasz się także z wykorzystaniem obiektów StringProperty
+zamiast String, jednak jest to użyteczne w sytuacji, gdy pola te będą edytowane. W naszym przypadku nie ma takiej potrzeby.*/
+
 public class Mp3Song {
     private String author;
     private String title;
