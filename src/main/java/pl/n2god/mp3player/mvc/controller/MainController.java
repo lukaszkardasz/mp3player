@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import pl.n2god.mp3player.mvc.mp3.Mp3Song;
 import pl.n2god.mp3player.mvc.player.Mp3Player;
 
@@ -55,7 +56,20 @@ public class MainController{
     }
 
     private void configureProgressBar() {
-
+        Slider progressSlider = controlController.getProgressSlider();
+        //suwak długości postępu - ustawianie max długości na podstawie długości piosenki
+        player.getMediaPlayer().setOnReady(() -> progressSlider.setMax(player.getLoadedSongLength()));
+        //zmiana aktualnego czasu piosenki będzie aktualizowała suwak postępu
+        player.getMediaPlayer().currentTimeProperty().addListener(
+                (argument, oldValue, newValue) -> {
+                    progressSlider.setValue(newValue.toSeconds());
+                });
+        //przesunięcie suwaka powodujące przesunięcie piosenki we wskazane miejsce
+        progressSlider.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
+            if(progressSlider.isValueChanging()){
+                player.getMediaPlayer().seek(Duration.seconds(newValue.doubleValue()));
+            }
+        }));
     }
 
     private void configureVolume() {
