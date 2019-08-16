@@ -68,9 +68,7 @@ public class MainController{
         player.getMediaPlayer().setOnReady(() -> progressSlider.setMax(player.getLoadedSongLength()));
         //zmiana aktualnego czasu piosenki będzie aktualizowała suwak postępu
         player.getMediaPlayer().currentTimeProperty().addListener(
-                (argument, oldValue, newValue) -> {
-                    progressSlider.setValue(newValue.toSeconds());
-                });
+                (argument, oldValue, newValue) -> progressSlider.setValue(newValue.toSeconds()));
         //przesunięcie suwaka powodujące przesunięcie piosenki we wskazane miejsce
         progressSlider.valueProperty().addListener(((observableValue, oldValue, newValue) -> {
             if(progressSlider.isValueChanging()){
