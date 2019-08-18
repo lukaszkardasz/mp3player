@@ -9,17 +9,11 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.farng.mp3.MP3File;
-import org.farng.mp3.TagException;
 import pl.n2god.mp3player.mvc.mp3.Mp3Parser;
 import pl.n2god.mp3player.mvc.mp3.Mp3Song;
 import pl.n2god.mp3player.mvc.player.Mp3Player;
 
 import java.io.File;
-import java.io.IOException;
-
-import static pl.n2god.mp3player.mvc.mp3.Mp3Parser.getMp3Song;
-
 /**
  * @author n2god on 08/08/2019
  * @project mp3player
@@ -69,7 +63,7 @@ public class MainController {
                 e.printStackTrace(); //ignore
             }
         });
-
+        System.out.println("Menu configured");
     }
 
     private void createPlayer() {
@@ -100,7 +94,6 @@ public class MainController {
         Slider progressSlider = controlController.getProgressSlider();
         //suwak długości postępu - ustawianie max długości na podstawie długości piosenki
         player.getMediaPlayer().setOnReady(() -> progressSlider.setMax(player.getLoadedSongLength()));
-        //TODO fix error on configure progress bar
         //zmiana aktualnego czasu piosenki będzie aktualizowała suwak postępu
         player.getMediaPlayer().currentTimeProperty().addListener((arg, oldVal, newVal) ->
                 progressSlider.setValue(newVal.toSeconds()));
@@ -117,7 +110,7 @@ public class MainController {
         volumeSlider.valueProperty().unbind();
         volumeSlider.setMax(1.0);
         volumeSlider.valueProperty().bindBidirectional(player.getMediaPlayer().volumeProperty()); //podwójne bindowanie volume z playerem
-        System.out.println("volumeConfigured");
+        System.out.println("Volume configured");
     }
 
     private void configureButtons() {
