@@ -55,7 +55,7 @@ public class Mp3Player {
         }
         Mp3Song mp3Song = songList.get(index);
         media = new Media(new File(mp3Song.getFilePath()).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media); //<-- error fixed
         mediaPlayer.statusProperty().addListener((observable, oldStatus, newStatus) -> {
             if (newStatus == MediaPlayer.Status.READY){
                 mediaPlayer.setAutoPlay(true);
