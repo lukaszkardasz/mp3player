@@ -5,9 +5,13 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.farng.mp3.MP3File;
 import org.farng.mp3.TagException;
+import pl.n2god.mp3player.mvc.mp3.Mp3Parser;
 import pl.n2god.mp3player.mvc.mp3.Mp3Song;
 import pl.n2god.mp3player.mvc.player.Mp3Player;
 
@@ -36,7 +40,34 @@ public class MainController{
         createPlayer();
         configureTableClick();
         configureButtons();
-        addTestMp3();
+        configureMenu();
+    }
+
+    private void configureMenu() {
+        MenuItem openFile = menuController.getFileMenuItem();
+        MenuItem openDir = menuController.getDirMenuItem();
+
+        openFile.setOnAction(actionEvent -> {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Mp3", "mp3"));
+            File file = fileChooser.showOpenDialog(new Stage());
+            try {
+                contentController.getContentTable().getItems().add(Mp3Parser.createMp3Song(file));
+            } catch (Exception e) {
+                e.printStackTrace(); //ignore
+            }
+        });
+
+        openDir.setOnAction(actionEvent -> {
+            DirectoryChooser directoryChooser = new DirectoryChooser();
+            File dir = directoryChooser.showDialog(new Stage());
+            try {
+                contentController.getContentTable().getItems().addAll(Mp3Parser.createMp3List(dir));
+            } catch (Exception e) {
+                e.printStackTrace(); //ignore
+            }
+        });
+
     }
 
     private void createPlayer() {

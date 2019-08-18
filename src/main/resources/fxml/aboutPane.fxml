@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.n2god.mp3player.mvc.controller.AboutController">
+    <children>
+        <TextField alignment="TOP_CENTER" editable="false" text="
+      Program Mp3Player
+
+      &#10;Wersja programu v1.0
+
+      &#10;Wykorzystane biblioteki:
+
+      &#10;http://javamusictag.sourceforge.net/"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0"  AnchorPane.topAnchor="0.0"/>
+    </children>
+</AnchorPane>
