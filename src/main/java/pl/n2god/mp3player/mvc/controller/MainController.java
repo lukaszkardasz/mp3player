@@ -49,8 +49,9 @@ public class MainController {
             File file = fileChooser.showOpenDialog(new Stage());
             try {
                 contentController.getContentTable().getItems().add(Mp3Parser.createMp3Song(file));
+                showMessage("Załadowano plik " + file.getName());
             } catch (Exception e) {
-                e.printStackTrace(); //ignore
+                showMessage("Nie udało się otworzyć pliku: " + file.getName());
             }
         });
 
@@ -59,11 +60,16 @@ public class MainController {
             File dir = directoryChooser.showDialog(new Stage());
             try {
                 contentController.getContentTable().getItems().addAll(Mp3Parser.createMp3List(dir));
+                showMessage("Wczytano dane z folderu " + dir.getName());
             } catch (Exception e) {
-                e.printStackTrace(); //ignore
+                showMessage("Wystąpił błąd podczas odczytu folderu");
             }
         });
         System.out.println("Menu configured");
+    }
+
+    private void showMessage(String message){
+        controlController.getMessageField().setText(message);
     }
 
     private void createPlayer() {
