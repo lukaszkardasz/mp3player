@@ -14,27 +14,30 @@ import java.util.List;
  */
 public class Mp3Parser {
     public static Mp3Song createMp3Song(File file) throws IOException, TagException {
+        return getMp3Song(file);
+    }
+
+    public static Mp3Song getMp3Song(File file) throws IOException, TagException {
         MP3File mp3File = new MP3File(file);
         String absolutePath = file.getAbsolutePath();
         String title = mp3File.getID3v2Tag().getSongTitle();
         String author = mp3File.getID3v2Tag().getLeadArtist();
         String album = mp3File.getID3v2Tag().getAlbumTitle();
-        return new Mp3Song(author, title, album, absolutePath);
+        return new Mp3Song(title, author, album, absolutePath);
     }
 
     public static List<Mp3Song> createMp3List(File dir) throws IOException, TagException {
-        if (!dir.isDirectory()){
+        if(!dir.isDirectory()) {
             throw new IllegalArgumentException("Not a directory");
         }
         List<Mp3Song> songList = new ArrayList<>();
         File[] files = dir.listFiles();
-        for (File file : files) {
-            int lastIndexOf = file.getName().lastIndexOf(".");
-            String fileExtension = file.getName().substring(lastIndexOf + 1);
-            if(fileExtension.equals("mp3")){
-                songList.add(createMp3Song(file));
-            }
+        for(File f: files) {
+            String fileExtension = f.getName().substring(f.getName().lastIndexOf(".") + 1);
+            if(fileExtension.equals("mp3"))
+                songList.add(createMp3Song(f));
         }
+
         return songList;
     }
 }

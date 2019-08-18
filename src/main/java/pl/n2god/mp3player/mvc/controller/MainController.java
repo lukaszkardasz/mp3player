@@ -18,12 +18,14 @@ import pl.n2god.mp3player.mvc.player.Mp3Player;
 import java.io.File;
 import java.io.IOException;
 
+import static pl.n2god.mp3player.mvc.mp3.Mp3Parser.getMp3Song;
+
 /**
  * @author n2god on 08/08/2019
  * @project mp3player
  */
 
-public class MainController{
+public class MainController {
 
     @FXML
     private ContentController contentController;
@@ -36,7 +38,7 @@ public class MainController{
 
     private Mp3Player player;
 
-    public void initialize(){
+    public void initialize() {
         createPlayer();
         configureTableClick();
         configureButtons();
@@ -49,7 +51,7 @@ public class MainController{
 
         openFile.setOnAction(actionEvent -> {
             FileChooser fileChooser = new FileChooser();
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Mp3", "mp3"));
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Mp3", "*.mp3"));
             File file = fileChooser.showOpenDialog(new Stage());
             try {
                 contentController.getContentTable().getItems().add(Mp3Parser.createMp3Song(file));
@@ -72,7 +74,7 @@ public class MainController{
 
     private void createPlayer() {
         ObservableList<Mp3Song> items = contentController.getContentTable().getItems();
-         player = new Mp3Player(items);
+        player = new Mp3Player(items);
         System.out.println("Player created");
     }
 
@@ -104,7 +106,7 @@ public class MainController{
                 progressSlider.setValue(newVal.toSeconds()));
         //przesunięcie suwaka powodujące przesunięcie piosenki we wskazane miejsce
         progressSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
-            if(progressSlider.isValueChanging()) {
+            if (progressSlider.isValueChanging()) {
                 player.getMediaPlayer().seek(Duration.seconds(newValue.doubleValue()));
             }
         });
@@ -118,14 +120,14 @@ public class MainController{
         System.out.println("volumeConfigured");
     }
 
-    private void configureButtons(){
+    private void configureButtons() {
         TableView<Mp3Song> contentTable = contentController.getContentTable();
         ToggleButton playButton = controlController.getPlayButton();
         Button nextButton = controlController.getNextButton();
         Button previousButton = controlController.getPreviousButton();
 
         playButton.setOnAction(actionEvent -> {
-            if(playButton.isSelected()){
+            if (playButton.isSelected()) {
                 player.play();
             } else {
                 player.stop();
@@ -138,36 +140,10 @@ public class MainController{
         });
 
         previousButton.setOnAction(actionEvent -> {
-            contentTable.getSelectionModel().select(contentTable.getSelectionModel().getSelectedIndex()-1);
+            contentTable.getSelectionModel().select(contentTable.getSelectionModel().getSelectedIndex() - 1);
             playSelectedSong(contentTable.getSelectionModel().getSelectedIndex());
         });
         System.out.println("Buttons configured");
     }
-
-    private Mp3Song createMp3SongFromPath(String filePath){
-        File file = new File(filePath);
-
-        try {
-            MP3File mp3File = new MP3File(file);
-            String absolutePath = file.getAbsolutePath();
-            String title = mp3File.getID3v2Tag().getSongTitle();
-            String author = mp3File.getID3v2Tag().getLeadArtist();
-            String album = mp3File.getID3v2Tag().getAlbumTitle();
-            return new Mp3Song(title, author,album, absolutePath);
-        } catch (IOException | TagException e) {
-            e.getStackTrace();
-            return null; //zignorować
-        }
-    }
-
-    private void addTestMp3() {
-        ObservableList<Mp3Song> items = contentController.getContentTable().getItems();
-        Mp3Song mp3SongFromPath = createMp3SongFromPath("test.mp3");
-        items.add(mp3SongFromPath);
-        items.add(mp3SongFromPath);
-        items.add(mp3SongFromPath);
-    }
-
-
 }
 
