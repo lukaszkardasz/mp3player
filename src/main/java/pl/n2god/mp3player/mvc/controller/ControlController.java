@@ -8,6 +8,7 @@ package pl.n2god.mp3player.mvc.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
 public class ControlController {
@@ -26,6 +27,13 @@ public class ControlController {
 
     @FXML
     private Slider progressSlider;
+
+    @FXML
+    private TextField messageField;
+
+    public TextField getMessageField() {
+        return messageField;
+    }
 
     public Button getPreviousButton() {
         return previousButton;
